@@ -19,12 +19,12 @@ const Item = ({ producto }) => {
             {nombre}
         </div>
         <img variant="card-img-top" src={imagen} style={{ padding: 20 }} />        
-        <div className="card-body mb-2">
+        <div className="card-body">
           <div className="card-text" style={{ height: "3rem" }}>
             {descripcion}
           </div>
         </div>
-        <div className="card-footer text-muted">
+        <div className="card-footer text-muted mt-4">
           <Link to={`/producto/${producto.id}`} className="btn btn-primary">
               <BsSearch/>{" "}Ver detalle
           </Link>    {/* link a vista ProductDetail  */}

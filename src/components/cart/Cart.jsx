@@ -38,9 +38,9 @@ const Cart = () => {
 
     const ListadoCarrito = () => {
 
-        console.log('window.innerWidth ---> ', window.innerWidth)
+        // console.log('window.innerWidth ---> ', window.innerWidth)
 
-        if (window.innerWidth <= 500) {
+        if (window.innerWidth < 720) {
             return (
                 <div className='cart'>
                     <div className='listado'>
@@ -49,9 +49,9 @@ const Cart = () => {
                                 {contextCart.map((item, index) => (
                                     <div key={index} className="mb-5" >
                                         <div className="row tituloListado align-items-center fw-bold p-2 border bg-light" >
-                                            <div className="col-2 text-center">Código</div>
+                                            <div className="col-3 text-center">Código</div>
                                             <div className="col-9 text-center">Descripcion</div>
-                                            <div className="col-1 text-start btnEliminar" > 
+                                            {/* <div className="col-1 text-start btnEliminar" > 
                                                 <button type="button" title="Eliminar del carrito"
                                                         className="btn btn-primary"
                                                         onClick={() => removeFromCart(item.producto.codigo)} 
@@ -59,11 +59,11 @@ const Cart = () => {
                                                         textAlign: "center", fontSize: "10px"}} >
                                                         <MdDelete />
                                                 </button>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="row text-secondary align-items-center p-2 border" >
-                                            <div className="col-2 text-center">{item.producto.codigo}</div>
-                                            <div className="col-10 text-center">{item.producto.descripcion}</div>
+                                            <div className="col-3 text-center">{item.producto.codigo}</div>
+                                            <div className="col-9 text-center">{item.producto.descripcion}</div>
                                         </div>
                                         <div className="row tituloListado align-items-center fw-bold p-2 border bg-light" >
                                             <div className="col-3 text-center">Cantidad</div>
@@ -75,6 +75,19 @@ const Cart = () => {
                                             <div className="col-4 text-end">{formatPriceNumber(item.producto.precio)}</div>
                                             <div className="col-5 text-end">{formatPriceNumber((item.cantidad * item.producto.precio))}</div>
                                         </div>
+
+                                        <div className="align-items-center btnEliminar p-0 mt-2" > 
+                                                <div className="row col-12 text-center p-0 m-0" > 
+                                                    <button type="button" title="Eliminar del carrito"
+                                                            className="btn btn-primary btn-block p-1"
+                                                            onClick={() => removeFromCart(item.producto.codigo)} >
+                                                            <MdDelete />{" "}Eliminar del carrito
+                                                    </button>
+                                                </div>
+
+
+                                        </div>
+
                                     </div>
                                 ))}  
                             </div>
@@ -115,7 +128,7 @@ const Cart = () => {
                                         <div className="col-5 col-md-2 text-end">{formatPriceNumber((item.cantidad * item.producto.precio))}</div>
                                         <div className="col-2 col-md-1 text-center" > 
                                             <div className="btnEliminar">
-                                            <button type="button" title="Eliminar del carrito"
+                                                <button type="button" title="Eliminar del carrito"
                                                     className="btn btn-primary"
                                                     onClick={() => removeFromCart(item.producto.codigo)}
                                                     style={{padding: "0px 4px 3px 4px",
@@ -148,16 +161,18 @@ const Cart = () => {
     // principal
     return (
         <div className="cart pt-5 px-3" >
-            {/* <div className="container-fluid my-5 p-5 border"> */}
             <div className="container-fluid my-5 pt-5 border">
-                <h3 style={{ textAlign: "center" }}>
-                    Cantidad total de productos:{` ${contextItemsCart()}`}
-                </h3>
-                { contextItemsCart() > 0 ?
-                    <ListadoCarrito/>
-                : 
-                    <h3>El carrito está vacio</h3>
-                }
+                <div className="itemsCart" style={{ textAlign: "center" }} >
+                    {/* <h3 style={{ textAlign: "center" }}> */}
+                    <h3>
+                        Cantidad total de productos:{` ${contextItemsCart()}`}
+                    </h3>
+                    { contextItemsCart() > 0 ?
+                        <ListadoCarrito/>
+                    : 
+                        <h3>El carrito está vacio</h3>
+                    }
+                </div>
             </div>
         </div>
     )
