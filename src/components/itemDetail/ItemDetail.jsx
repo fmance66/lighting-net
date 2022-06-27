@@ -52,7 +52,7 @@ const ItemDetail = ( { producto } ) => {
 
   const Botones = () => {
     return (
-      <div className='botones container d-flex justify-content-center gap-5 my-4'>
+      <div className='botones container d-flex justify-content-center gap-4 my-3'>
         <div className="boton">
             {/* { enableAdd ?  */}
             { !isInCart(producto.codigo) ? 
