@@ -19,7 +19,7 @@ const Item = ({ producto }) => {
             {nombre}
         </div>
         <img variant="card-img-top" src={imagen} style={{ padding: 20 }} />        
-        <div className="card-body">
+        <div className="card-body mb-2">
           <div className="card-text" style={{ height: "3rem" }}>
             {descripcion}
           </div>
